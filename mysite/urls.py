@@ -19,14 +19,17 @@ from django.contrib import admin
 from bookmark.views import BookmarkLV, BookmarkDV
 from mysite.views import HomeView, BookmarkView
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
     url(r'^$', HomeView.as_view(), name='home'),
 
     url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
-
     url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
 
     url(r'blog/', include('blog.urls', namespace='blog')),
-]
+
+    url(r'^photo/', include('photo.urls', namespace='photo')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

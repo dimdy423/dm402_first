@@ -3,12 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load staticfiles %}
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Pattaya&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Pattaya&display=swap" rel="stylesheet">
+
+    <style>
+
+        .box{
+            width:400px; height:auto;
+            border:1px solid lightgray;
+            display:inline-block;
+            border-radius:5px;
+            margin-left:50px; margin-bottom:20px;
+        }
+        img{
+            width:380px; height:380px;
+            margin:auto; display:block;
+        }
+        p{
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 19px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .d{
+            height:100px;
+        }
+        .box_title{
+            text-align: center;
+            margin: 10px;
+            font-size: 30px;
+            color: orangered;
+            font-family: 'Pattaya', sans-serif;
+        }
+        #title{
+            font-family: 'Pattaya', sans-serif;
+            text-align: center;
+            font-size:130px;
+        }
+        #title_mini{
+            font-size:30px;
+            color:dimgray;
+        }
+        .label{
+            font-family: 'Pattaya', sans-serif;
+
+        }
+
+    </style>
+
 </head>
 <body>
-    <h1>Blog List</h1>
+    <h1 id="title">Blog <span id="title_mini">made with Django</span></h1>
+
     {% for post in posts %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.description }}</p>
+        <div class="box">
+            <p class="box_title">{{ post.title }}</p>
+            <div class="imgBox">
+                <img src="{{ post.image.url }}">
+            </div>
+            <p class="d"><span class="label">Description</span>{{ post.description }}</p>
+            <p><span class="label">Create Date</span>{{ post.create_date }}</p>
+            <p><span class="label">Modify Date</span>{{ post.modify_date }}</p>
+        </div>
     {% endfor %}
+
 </body>
 </html>

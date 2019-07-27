@@ -3,16 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>bookmark detail</title>
+    <style>
+        #content{
+            width:900px;
+            margin: auto;
+            text-align:center;
+            font-size:30px;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        ul{
+            list-style: none;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        li{
+            width: 900px;
+            margin: auto;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        li:hover{
+            background-color: rgba(255, 20, 147, 0.1);
+        }
+
+        a{
+            text-decoration: none;
+            color: dimgray;
+        }
+
+        h1{
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        #title{
+            font-size: 80px;
+            color: red;
+        }
+
+        .small{
+            font-size: 40px;
+            color: dimgray;
+        }
+
+        iframe{
+            width: 900px;
+            height: 506px;
+        }
+
+
+    </style>
 </head>
 <body>
     <div id="content">
-        <h1>{{ object.title }}</h1>
+        <h1 id="title">{{ object.title }}</h1>
 
         <ul>
             <li>URL: <a href="{{ object.url }}" target="_blank">
                 {{ object.url }}
             </a></li>
+            <li>Create Date : {{ object.create_date }}</li>
+            <li>Modify Date : {{ object.modify_date }}</li>
         </ul>
+
+        <iframe src="{{ object.url }}"></iframe>
 
     </div>
 
